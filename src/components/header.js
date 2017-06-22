@@ -1,9 +1,16 @@
 import React, {Component} from 'react';
 
 class Header extends Component {
+  
+  
   render() {
     return (
-      <h1>Sign In</h1>
+      <nav className="navbar navbar-light">
+        <Link to="/" className="navbar-brand">Redux Auth</Link>
+        <ul className="nav navbar-nav">
+          {this.renderLinks()}
+        </ul>
+      </nav>
     )
   }
 }
