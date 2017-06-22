@@ -11,7 +11,12 @@ import logger from 'redux-logger';
 import reducers from './reducers/index';
 import App from './components/app';
 import Resources from './components/resources';
-// Step 1 Create the store
+import Landing from './components/landing';
+import './react_public/stylesheets/landing.css';
+import SignIn from './auth/signIn';
+import SignOut from './auth/signOut';
+import SignUp from './auth/signUp';
+
 
 
 const store = createStore(reducers, applyMiddleware(logger))
@@ -20,6 +25,10 @@ ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
       <Route path='/' component={App}>
+        <IndexRoute component={Landing} />
+        <Route path="signin" component={SignIn} />
+        <Route path="signout" component={SignOut} />
+        <Route path="signup" component={SignUp} />
         <Route path="resources" component={Resources} />
       </Route>
     </Router>
