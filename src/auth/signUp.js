@@ -4,7 +4,7 @@ import * as actions from '../actions';
 
 class SignUp extends Component {
   render() {
-    const {handleSubmit, fields: { username, password, email, zip}} = this.props;
+    const {handleSubmit, fields: { username, email, zip, password, passwordConfirm}} = this.props;
     
     return (
       <form>
@@ -13,14 +13,6 @@ class SignUp extends Component {
           <Field
             name="username"
             type="text"
-            component="input"
-            className="form-control" />
-        </fieldset>
-        <fieldset className="form-group">
-          <label>Password</label>
-          <Field
-            name="password"
-            type="password"
             component="input"
             className="form-control" />
         </fieldset>
@@ -39,6 +31,24 @@ class SignUp extends Component {
             type="text"
             component="input"
             pattern="\d{5}-?(\d{4})?"
+            className="form-control"
+            />
+        </fieldset>
+        <fieldset className="form-group">
+          <label>Password</label>
+          <Field
+            name="password"
+            type="password"
+            component="input"
+            className="form-control" />
+            {Field.error}
+        </fieldset>
+        <fieldset className="form-group">
+          <label>Confirm Password</label>
+          <Field
+            name="passwordConfirm"
+            type="password"
+            component="input"
             className="form-control" />
         </fieldset>
         <button action="submit" className="btn btn-primary">Sign Up</button>
@@ -47,11 +57,14 @@ class SignUp extends Component {
   }
 }
 
-
+const validate = values => {
+  const errors = {}
+  return errors;
+}
 
 SignUp = reduxForm({
   form: "signUp",
-  fields: ['username','password','email', 'zip']}
+  fields: ['username','email', 'zip','password','passwordConfirm'], validate }
 )(SignUp);
 
 export default SignUp;
