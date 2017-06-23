@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
+import authReducer from './auth_reducer';
+import {reducer as formReducer}  from 'redux-form';
 
 const rootReducer = combineReducers({
-  state: (state = {}) => state
+  form: formReducer,
+  auth: authReducer
 });
 
 export default rootReducer;

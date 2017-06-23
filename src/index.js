@@ -6,6 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import {Router, Route, IndexRoute, browserHistory} from 'react-router';
 import {createStore, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
+import reduxThunk from 'redux-thunk';
 
 // import requireAuth from './components/hoc/require_auth';
 import reducers from './reducers/index';
@@ -17,9 +18,10 @@ import SignIn from './auth/signIn';
 import SignOut from './auth/signOut';
 import SignUp from './auth/signUp';
 
+const middleware = [reduxThunk, logger]
 
 
-const store = createStore(reducers, applyMiddleware(logger))
+const store = createStore(reducers, applyMiddleware(...middleware))
 
 ReactDOM.render(
   <Provider store={store}>
