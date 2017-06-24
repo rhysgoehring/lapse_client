@@ -11,12 +11,13 @@ import reduxThunk from 'redux-thunk';
 // import requireAuth from './components/hoc/require_auth';
 import reducers from './reducers/index';
 import App from './auth/app';
-import Resources from './components/resources';
+import Dashboard from './components/dashboard';
 import Landing from './components/landing';
 import './react_public/stylesheets/landing.css';
 import SignIn from './auth/signIn';
 import SignOut from './auth/signOut';
 import SignUp from './auth/signUp';
+import RequireAuth from './auth/hocRequireAuth';
 
 const middleware = [reduxThunk, logger]
 
@@ -31,7 +32,7 @@ ReactDOM.render(
         <Route path="signin" component={SignIn} />
         <Route path="signout" component={SignOut} />
         <Route path="signup" component={SignUp} />
-        <Route path="resources" component={Resources} />
+        <Route path="dashboard" component={RequireAuth(Dashboard)} />
       </Route>
     </Router>
   </Provider>, document.getElementById('root')

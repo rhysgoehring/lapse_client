@@ -26,7 +26,7 @@ export function signinUser({ username, password }) {
         // localStorage.setItem({'currentUser', currentUser});
         // console.log('token after storage:', token)
         // redirect to the route 'resources'
-        browserHistory.push('/resources')
+        browserHistory.push('/dashboard')
     })
     .catch(() => {
       //if request is bad show an error
@@ -47,7 +47,7 @@ export function signupUser({username, password, email}) {
         const token = (JSON.stringify(response.data.token)).valueOf().valueOf();
         localStorage.setItem('token', token);
         localStorage.setItem('currentUser', currentUser);
-        browserHistory.push('/feature')
+        browserHistory.push('/dashboard')
       
       
       })
