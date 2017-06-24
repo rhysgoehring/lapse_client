@@ -1,13 +1,33 @@
 import React, {Component} from 'react';
 import { reduxForm, Field } from 'redux-form';
-import * as actions from '../actions';
+import {connect} from 'react-redux';
+import * as actions from '../actions/index';
+
+
 
 class SignUp extends Component {
+  
+  handleFormSubmit(values){
+    console.log(values)
+    // Call action creator to sign up the user
+    this.props.signupUser(values);
+  }
+  
+  renderAlert() {
+    if (this.props.errorMessage) {
+      return (
+        <div className="alert alert-danger">
+          <strong>Oops</strong> {this.props.errorMessage}
+        </div>
+      );
+    }
+  }
+  
   render() {
-    const {handleSubmit, fields: { username, email, zip, password, passwordConfirm}} = this.props;
+    const {handleSubmit, fields: { username, email, password }} = this.props;
     
     return (
-      <form>
+      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
         <fieldset className="form-group">
           <label>Username</label>
           <Field
@@ -25,16 +45,6 @@ class SignUp extends Component {
             className="form-control" />
         </fieldset>
         <fieldset className="form-group">
-          <label>Zip Code</label>
-          <Field
-            name="zip"
-            type="text"
-            component="input"
-            pattern="\d{5}-?(\d{4})?"
-            className="form-control"
-            />
-        </fieldset>
-        <fieldset className="form-group">
           <label>Password</label>
           <Field
             name="password"
@@ -43,28 +53,25 @@ class SignUp extends Component {
             className="form-control" />
             {Field.error}
         </fieldset>
-        <fieldset className="form-group">
-          <label>Confirm Password</label>
-          <Field
-            name="passwordConfirm"
-            type="password"
-            component="input"
-            className="form-control" />
-        </fieldset>
+        {this.renderAlert()}
         <button action="submit" className="btn btn-primary">Sign Up</button>
       </form>
     )
   }
 }
 
-const validate = values => {
-  const errors = {}
-  return errors;
-}
+// TODO Finish validation
+// const validate = values => {
+//   const errors = {}
+//   return errors;
+// }
 
+function mapStateToProps(state) {
+  return { errorMessage: state.auth.error }
+}
+SignUp = connect(mapStateToProps, actions)(SignUp)
 SignUp = reduxForm({
   form: "signUp",
-  fields: ['username','email', 'zip','password','passwordConfirm'], validate }
-)(SignUp);
+  fields: ['username','email','password']})(SignUp);
 
 export default SignUp;

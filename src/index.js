@@ -10,7 +10,7 @@ import reduxThunk from 'redux-thunk';
 
 // import requireAuth from './components/hoc/require_auth';
 import reducers from './reducers/index';
-import App from './components/app';
+import App from './auth/app';
 import Resources from './components/resources';
 import Landing from './components/landing';
 import './react_public/stylesheets/landing.css';
