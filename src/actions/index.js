@@ -33,7 +33,7 @@ export function signinUser({ username, password }) {
         // localStorage.setItem({'currentUser', currentUser});
         // console.log('token after storage:', token)
         // redirect to the route 'resources'
-        // browserHistory.push('/dashboard')
+        browserHistory.push('/dashboard')
     })
     .catch(() => {
       //if request is bad show an error
@@ -48,12 +48,17 @@ export function signupUser({username, password, email}) {
     axios.post(`${ROOT_URL}/api/users/signup`, { username, password, email})
       .then(response => {
         
-        dispatch({type: AUTH_USER });
+        const currentUser = response.data.currentUser.id
+        const token = response.data.token
+        dispatch(
+          {
+            type: AUTH_USER,
+            payload: currentUser
+          }
+        )
         
-        const currentUser = JSON.stringify(response.data.user)
-        const token = (JSON.stringify(response.data.token)).valueOf().valueOf();
+ 
         localStorage.setItem('token', token);
-        localStorage.setItem('currentUser', currentUser);
         browserHistory.push('/dashboard')
       
       
@@ -74,7 +79,6 @@ export function authError(error) {
 
 export function signOutUser() {
   localStorage.removeItem('token');
-  localStorage.removeItem('currentUser');
   return {
     type: UNAUTH_USER
   }
