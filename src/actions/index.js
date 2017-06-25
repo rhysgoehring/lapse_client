@@ -12,21 +12,28 @@ export function signinUser({ username, password }) {
       //if request is good
         // update state to indicate user is auth'd
         
-        dispatch({type: AUTH_USER})
+        console.log('RESPONSE IS: ', response)
+        const currentUser = response.data.currentUser.id
+        const token = response.data.token
+        dispatch(
+          {
+            type: AUTH_USER,
+            payload: currentUser
+          }
+        )
         // save the jwt token
-        const token = (JSON.stringify(response.data.token)).valueOf()
+        
         console.log('token:', token)
         
-        const currentUser = JSON.stringify(response.data.user)
         console.log('currentUser:', currentUser)
         
-        localStorage.setItem('token', token)
-        localStorage.setItem('currentUser', currentUser);
+        console.log(localStorage)
+        localStorage.setItem('token', token);
         // localStorage.token = response.token
         // localStorage.setItem({'currentUser', currentUser});
         // console.log('token after storage:', token)
         // redirect to the route 'resources'
-        browserHistory.push('/dashboard')
+        // browserHistory.push('/dashboard')
     })
     .catch(() => {
       //if request is bad show an error

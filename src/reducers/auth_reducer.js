@@ -6,12 +6,14 @@ export default function(state = {}, action) {
       return {
         ...state,
         error: '',
-        authenticated: true
+        authenticated: true,
+        userId: action.payload
       };
     case UNAUTH_USER:
       return {
         ...state,
-        authenticated: false
+        authenticated: false,
+        userId: null
       };
     case AUTH_ERROR:
       return {
