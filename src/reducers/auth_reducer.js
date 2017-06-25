@@ -7,13 +7,19 @@ export default function(state = {}, action) {
         ...state,
         error: '',
         authenticated: true,
-        userId: action.payload
+        userId: action.payload.id,
+        username: action.payload.username,
+        profilePic: action.payload.profile_pic,
+        email: action.payload.email
       };
     case UNAUTH_USER:
       return {
         ...state,
         authenticated: false,
-        userId: null
+        userId: null,
+        username: null,
+        profilePic: null,
+        email: null
       };
     case AUTH_ERROR:
       return {

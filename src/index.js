@@ -8,7 +8,7 @@ import {createStore, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
 import reduxThunk from 'redux-thunk';
 
-// import requireAuth from './components/hoc/require_auth';
+import './react_public/stylesheets/index.css'
 import reducers from './reducers/index';
 import App from './auth/app';
 import Dashboard from './components/dashboard';
@@ -25,11 +25,15 @@ const store = createStore(reducers, applyMiddleware(...middleware))
 
 // Automatically authenticate users, check on localStorage.getItem()
 // it doesn't seem to work with webpack, might have to declare it as a var
-const token = localStorage.getItem('token');
-
-if (token) {
-  store.dispatch({type: AUTH_USER})
-}
+// const token = localStorage.getItem('token');
+//
+// if (token) {
+//   store.dispatch(
+//     {
+//       type: AUTH_USER,
+//       payload: currentUser
+//     })
+// }
 
 
 ReactDOM.render(

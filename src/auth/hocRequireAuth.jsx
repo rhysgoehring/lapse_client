@@ -5,9 +5,11 @@ export default function(ComposedComponent) {
   class Authentication extends Component {
     static contextTypes = {
       router: React.PropTypes.object
+      
     }
 
     componentWillMount() {
+      console.log('React.PropTypes', React.PropTypes)
       if (!this.props.authenticated) {
         this.context.router.push('/');
       }

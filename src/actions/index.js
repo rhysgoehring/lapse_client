@@ -11,9 +11,8 @@ export function signinUser({ username, password }) {
     .then(response => {
       //if request is good
         // update state to indicate user is auth'd
-        
-        console.log('RESPONSE IS: ', response)
-        const currentUser = response.data.currentUser.id
+        // console.log('RESPONSE IS: ', response)
+        const currentUser = response.data.currentUser
         const token = response.data.token
         dispatch(
           {
@@ -22,16 +21,8 @@ export function signinUser({ username, password }) {
           }
         )
         // save the jwt token
-        
-        console.log('token:', token)
-        
-        console.log('currentUser:', currentUser)
-        
-        console.log(localStorage)
         localStorage.setItem('token', token);
-        // localStorage.token = response.token
-        // localStorage.setItem({'currentUser', currentUser});
-        // console.log('token after storage:', token)
+        localStorage.setItem('currentUser', currentUser.id);
         // redirect to the route 'resources'
         browserHistory.push('/dashboard')
     })
@@ -56,17 +47,11 @@ export function signupUser({username, password, email}) {
             payload: currentUser
           }
         )
-        
- 
+  
         localStorage.setItem('token', token);
         browserHistory.push('/dashboard')
-      
-      
       })
-      
       .catch(response => dispatch(authError()))
-        
-      
   }
 }
 
@@ -79,6 +64,7 @@ export function authError(error) {
 
 export function signOutUser() {
   localStorage.removeItem('token');
+  localStorage.removeItem('currentUser');
   return {
     type: UNAUTH_USER
   }
