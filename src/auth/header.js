@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router';
 import {connect} from 'react-redux';
+import {Navbar, Nav, NavItem, NavDropDown, MenuItem, Row, Col} from 'react-bootstrap';
 
 class Header extends Component {
 
@@ -28,13 +29,31 @@ class Header extends Component {
   
   render() {
     return (
-      <nav className="navbar navbar-light">
-        <Link to="/" className="navbar-brand">Lapse</Link>
-        
-        <ul className = "nav navbar-nav">
-          {this.renderLinks()}
-        </ul>
-      </nav>
+
+      <Navbar fluid collapseOnSelect>
+          <Col md={3} lg={3} lgOffset={1} sm={4}>
+            <Nav>
+              <NavItem eventKey={1}>
+                <Link to="/newLapse">New Lapse</Link>
+              </NavItem>
+              <NavItem eventKey={2} href="#">Link Left</NavItem>
+            </Nav>
+          </Col>
+          <Col md={4} lg={2} lgOffset={1} sm={4}>
+            <Navbar.Brand>
+              <a href="#">Lapse</a>
+            </Navbar.Brand>
+            <Navbar.Toggle />
+          </Col>
+        <Navbar.Collapse>
+          <Col md={3} lg={3} lgPush={2} sm={4}>
+            <Nav>
+              <NavItem eventKey={1} href="#"><img className="navbar-link" src={this.props.profilePic} style={{ width: '5.280em'}} /></NavItem>
+              <NavItem eventKey={2} href="#">Link Right</NavItem>
+            </Nav>
+          </Col>
+        </Navbar.Collapse>
+      </Navbar>
     )
     }
   }

@@ -49,6 +49,7 @@ export function signupUser({username, password, email}) {
         )
   
         localStorage.setItem('token', token);
+        localStorage.setItem('currentUser', currentUser);
         browserHistory.push('/dashboard')
       })
       .catch(response => dispatch(authError()))

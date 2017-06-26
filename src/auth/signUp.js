@@ -3,8 +3,6 @@ import { reduxForm, Field } from 'redux-form';
 import {connect} from 'react-redux';
 import * as actions from '../actions/index';
 
-
-
 class SignUp extends Component {
   
   handleFormSubmit(values){
@@ -59,7 +57,6 @@ class SignUp extends Component {
     )
   }
 }
-
 // TODO Finish validation
 // const validate = values => {
 //   const errors = {}

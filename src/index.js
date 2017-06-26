@@ -18,6 +18,7 @@ import SignIn from './auth/signIn';
 import SignOut from './auth/signOut';
 import SignUp from './auth/signUp';
 import RequireAuth from './auth/hocRequireAuth';
+import NewLapse  from './components/newLapse';
 import {AUTH_USER} from './actions/types';
 
 const middleware = [reduxThunk, logger]
@@ -34,8 +35,6 @@ const store = createStore(reducers, applyMiddleware(...middleware))
 //       payload: currentUser
 //     })
 // }
-
-
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
@@ -45,6 +44,7 @@ ReactDOM.render(
         <Route path="signout" component={SignOut} />
         <Route path="signup" component={SignUp} />
         <Route path="dashboard" component={RequireAuth(Dashboard)} />
+        <Route path="newLapse" component={NewLapse} />
       </Route>
     </Router>
   </Provider>, document.getElementById('root')
