@@ -52,7 +52,7 @@ ReactDOM.render(
         <Route path="signin" component={SignIn} />
         <Route path="signout" component={SignOut} />
         <Route path="signup" component={SignUp} />
-        <Route path="dashboard" component={RequireAuth(Dashboard)} />
+        <Route path="dashboard" component={Dashboard} />
         <Route path="newLapse" component={NewLapse} />
       </Route>
     </Router>

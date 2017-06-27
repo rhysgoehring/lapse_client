@@ -48,7 +48,7 @@ class Header extends Component {
         <Navbar.Collapse>
           <Col md={3} lg={3} lgPush={2} sm={4}>
             <Nav>
-              <NavItem eventKey={1} href="#"><img className="navbar-link" src={this.props.profilePic} style={{ width: '5.280em'}} /></NavItem>
+              <NavItem eventKey={1} href="#"><img className="navbar-link" src={this.props.profilePic} style={{ width: '2.60em'}} /></NavItem>
               <NavItem eventKey={2} href="#">Link Right</NavItem>
             </Nav>
           </Col>

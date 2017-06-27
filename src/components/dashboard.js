@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
-import VideoPlayer from './videoPlayer'
+import VideoDetail from './videoPlayer/video_detail'
 
 class Dashboard extends Component {
   render() {
     return (
       <div>
-        <VideoPlayer />
+        <VideoDetail />
       </div>
     )
   }
