@@ -1,9 +1,12 @@
 import React, {Component} from 'react';
+import VideoPlayer from './videoPlayer'
 
 class Dashboard extends Component {
   render() {
     return (
-      <h1>Welcome to Lapse, </h1>
+      <div>
+        <VideoPlayer />
+      </div>
     )
   }
 }
