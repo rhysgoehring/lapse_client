@@ -3,21 +3,41 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import _ from 'lodash';
 import * as actions from '../actions/index';
+import {Modal } from 'react-bootstrap';
 
 
 class Dashboard extends Component {
+  constructor(){
+    super();
+    this.state={
+      showModal: false,
+      selectedLapse: {}
+    }
+  }
+  
   
   componentDidMount() {
+    console.log('$$$this.props', this.props)
     this.props.getAllLapses();
   }
   
   renderLapses() {
     return _.map(this.props.lapses, lapse => {
-      console.log('lapse after map: ', lapse)
       return (
-        <div className="col-md-4" key={lapse.id}>
-          <div className="thumbnail">
-            <img src={lapse.pic_2_url} alt={lapse.pic_2_desc} />
+        <div className="col-md-6" key={lapse.id}>
+          <div className="responsive-embed">
+            
+            <video className="video-player embed-responsive-item" controls >
+              <source type="application/x-mpegurl" src={lapse.playlist_url} />
+              <source type="video/mp4" src={lapse.url1} />
+              <source type="video/mp4"
+              src={lapse.url2} />
+              <source type="video/mp4"
+              src={lapse.url3} />
+              <source type="video/mp4"
+              src={lapse.url4} />
+            </video>
+            {/* <img src={lapse.pic_2_url} alt={lapse.pic_2_desc} /> */}
             <div className="caption">
               <h3>{lapse.name}</h3>
               <p>{lapse.description}</p>
@@ -39,7 +59,7 @@ class Dashboard extends Component {
   
   
   render() {
-    console.log('$$$$____this.props.lapses: ', this.props.lapses)
+    
     
     return (
       <div className="container">
