@@ -34,7 +34,7 @@ class Dashboard extends Component {
               <p>Taken on <strong>{lapse.date}</strong> in <strong>{lapse.location}</strong></p>
               <div className="row">
                 <div className="col-md-6">
-                  <Link className="btn btn-primary" to={`/lapses/${lapse.id}`}>View This Lapse</Link>
+                  <button className="btn-btn-success">Another Action</button>
                 </div>
                 <div className="col-md-6">
                   <button className="btn btn-primary">All User's Lapses</button>

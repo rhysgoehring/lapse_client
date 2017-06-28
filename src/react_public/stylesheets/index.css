@@ -2,3 +2,8 @@
   width: 500px;
   align-content: center;
 }
+
+img.navbar-link {
+  /*height: 50px;*/
+  width: 4.00em;
+}
