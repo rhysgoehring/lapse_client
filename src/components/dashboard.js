@@ -7,14 +7,6 @@ import {Modal } from 'react-bootstrap';
 
 
 class Dashboard extends Component {
-  constructor(){
-    super();
-    this.state={
-      showModal: false,
-      selectedLapse: {}
-    }
-  }
-  
   
   componentDidMount() {
     console.log('$$$this.props', this.props)
@@ -25,9 +17,8 @@ class Dashboard extends Component {
     return _.map(this.props.lapses, lapse => {
       return (
         <div className="col-md-6" key={lapse.id}>
-          <div className="responsive-embed">
-            
-            <video className="video-player embed-responsive-item" controls >
+          <div>
+            <video className="video-player " controls>
               <source type="application/x-mpegurl" src={lapse.playlist_url} />
               <source type="video/mp4" src={lapse.url1} />
               <source type="video/mp4"
@@ -37,8 +28,7 @@ class Dashboard extends Component {
               <source type="video/mp4"
               src={lapse.url4} />
             </video>
-            {/* <img src={lapse.pic_2_url} alt={lapse.pic_2_desc} /> */}
-            <div className="caption">
+            <div>
               <h3>{lapse.name}</h3>
               <p>{lapse.description}</p>
               <p>Taken on <strong>{lapse.date}</strong> in <strong>{lapse.location}</strong></p>
