@@ -8,14 +8,8 @@ import {createStore, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
 import reduxThunk from 'redux-thunk';
 
-
-
-
 import './react_public/stylesheets/index.css'
 import './react_public/stylesheets/landing.css';
-
-
-
 
 import reducers from './reducers/index';
 
@@ -27,6 +21,7 @@ import SignOut from './auth/signOut';
 import SignUp from './auth/signUp';
 import RequireAuth from './auth/hocRequireAuth';
 import NewLapse  from './components/newLapse';
+import ViewLapse from './components/videoPlayer/viewLapse';
 
 import {AUTH_USER} from './actions/types';
 
@@ -52,8 +47,9 @@ ReactDOM.render(
         <Route path="signin" component={SignIn} />
         <Route path="signout" component={SignOut} />
         <Route path="signup" component={SignUp} />
-        <Route path="dashboard" component={Dashboard} />
-        <Route path="newLapse" component={NewLapse} />
+        <Route path="dashboard" component={RequireAuth(Dashboard)} />
+        <Route path="newLapse" component={RequireAuth(NewLapse)} />
+        <Route path="lapses/:id" component={RequireAuth(ViewLapse)} />
       </Route>
     </Router>
   </Provider>, document.getElementById('root')

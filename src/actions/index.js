@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {browserHistory} from 'react-router';
-import {AUTH_USER, UNAUTH_USER, AUTH_ERROR} from './types';
+import {AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ALL_LAPSES} from './types';
 
 const ROOT_URL = 'http://localhost:8080';
 
@@ -69,4 +69,24 @@ export function signOutUser() {
   return {
     type: UNAUTH_USER
   }
+}
+
+export function getAllLapses() {
+  return function(dispatch) {
+    // Submit email/password to the server
+    axios.get(`${ROOT_URL}/api/lapses`)
+    .then((response) => {
+      console.log(response)
+    
+    dispatch(
+      {
+        type: GET_ALL_LAPSES,
+        payload: response.data
+      }
+    )
+  })
+    .catch((error) => {
+    console.log(error);
+  });
+}
 }
