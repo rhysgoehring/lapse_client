@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import { reduxForm, Field } from 'redux-form';
 import {connect} from 'react-redux';
 import * as actions from '../actions/index';
+import {Link} from 'react-router';
 
 class SignUp extends Component {
   
@@ -25,35 +26,39 @@ class SignUp extends Component {
     const {handleSubmit, fields: { username, email, password }} = this.props;
     
     return (
-      <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-        <fieldset className="form-group">
-          <label>Username</label>
-          <Field
-            name="username"
-            type="text"
-            component="input"
-            className="form-control" />
-        </fieldset>
-        <fieldset className="form-group">
-          <label>Email</label>
-          <Field
-            name="email"
-            type="email"
-            component="input"
-            className="form-control" />
-        </fieldset>
-        <fieldset className="form-group">
-          <label>Password</label>
-          <Field
-            name="password"
-            type="password"
-            component="input"
-            className="form-control" />
-            {Field.error}
-        </fieldset>
-        {this.renderAlert()}
-        <button action="submit" className="btn btn-primary">Sign Up</button>
-      </form>
+      <div className="container-fluid">
+        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+          <fieldset className="form-group">
+            <label>Username</label>
+            <Field
+              name="username"
+              type="text"
+              component="input"
+              className="form-control" />
+          </fieldset>
+          <fieldset className="form-group">
+            <label>Email</label>
+            <Field
+              name="email"
+              type="email"
+              component="input"
+              className="form-control" />
+          </fieldset>
+          <fieldset className="form-group">
+            <label>Password</label>
+            <Field
+              name="password"
+              type="password"
+              component="input"
+              className="form-control" />
+              {Field.error}
+          </fieldset>
+          {this.renderAlert()}
+          <button action="submit" className="btn btn-primary">Sign Up</button>
+          <Link className="btn btn-primary" to="/signin">Sign In</Link>
+        </form>
+      </div>
+      
     )
   }
 }
