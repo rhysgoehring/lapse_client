@@ -93,7 +93,7 @@ class Dashboard extends Component {
     return (
       <div className="container">
         {/* <VideoDetail /> */}
-        <h1 className="text-center">Lapses</h1>
+        <h1 className="text-center">Dashboard</h1>
         <hr />
         {this.renderLapses()}
       </div>

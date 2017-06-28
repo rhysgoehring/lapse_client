@@ -48,9 +48,9 @@ ReactDOM.render(
         <Route path="signin" component={SignIn} />
         <Route path="signout" component={SignOut} />
         <Route path="signup" component={SignUp} />
-        <Route path="dashboard" component={Dashboard} />
-        <Route path="newLapse" component={NewLapse} />
-        <Route path="profile" component={Profile} />
+        <Route path="dashboard" component={RequireAuth(Dashboard)} />
+        <Route path="newLapse" component={RequireAuth(NewLapse)} />
+        <Route path="profile" component={RequireAuth(Profile)} />
         {/* <Route path="dashboard" component={RequireAuth(Dashboard)} />
         <Route path="newLapse" component={RequireAuth(NewLapse)} />
         <Route path="lapses/:id" component={RequireAuth(ViewLapse)} /> */}
