@@ -3,16 +3,33 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router';
 import _ from 'lodash';
 import * as actions from '../actions/index';
-import {Modal } from 'react-bootstrap';
+import {Button, Glyphicon, Modal} from 'react-bootstrap';
+import {reduxForm, Field} from 'redux-form';
 
 
 class Dashboard extends Component {
+  constructor(props) {
+  super(props);
+  this.state = {
+    showModal: false,
+    comment: ''
+  }
+}
+  openModal() {
+    this.setState({showModal: true, comment: ''})
+  }
+  
+  closeModal() {
+    this.setState({showModal: false})
+  }
   
   componentDidMount() {
-    console.log('$$$this.props', this.props)
+    
     this.props.getAllLapses();
   }
   
+ 
+   
   renderLapses() {
     return _.map(this.props.lapses, lapse => {
       return (
@@ -29,17 +46,41 @@ class Dashboard extends Component {
               src={lapse.url4} />
             </video>
             <div>
-              <h3>{lapse.name}</h3>
+              <span><h3>{lapse.name}<Button className="pull-right"><Glyphicon glyph="plus"/></Button><Button className="pull-right"><Glyphicon glyph="minus"/></Button></h3></span>
               <p>{lapse.description}</p>
               <p>Taken on <strong>{lapse.date}</strong> in <strong>{lapse.location}</strong></p>
               <div className="row">
                 <div className="col-md-6">
-                  <button className="btn-btn-success">Another Action</button>
+                  <button onClick={this.openModal.bind(this)} className="btn btn-success">Comments</button>
                 </div>
                 <div className="col-md-6">
-                  <button className="btn btn-primary">All User's Lapses</button>
+                  <button className="btn btn-primary pull-right">All User's Lapses</button>
                 </div>
               </div>
+            <Modal show={this.state.showModal} onHide={this.state.closeModal}>
+              <Modal.Header closeButton >
+                <Modal.Title>Comments</Modal.Title>
+              </Modal.Header>
+              <Modal.Body>
+                <div className="well well-lg">
+                  // TODO: Create action and reducer for posting comments
+                </div>
+                <form>
+                  <fieldset className="form-group">
+                    <label>Enter Comment: </label>
+                    <Field
+                      name="comment"
+                      type="text"
+                      component="input"
+                      className="form-control" />
+                  </fieldset>
+                  <Button>Post</Button>
+                </form>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button onClick={this.closeModal.bind(this)}>Close</Button>
+              </Modal.Footer>
+            </Modal>
             </div>
           </div>
         </div>
@@ -49,8 +90,6 @@ class Dashboard extends Component {
   
   
   render() {
-    
-    
     return (
       <div className="container">
         {/* <VideoDetail /> */}
@@ -66,4 +105,11 @@ function mapStateToProps(state) {
   return {lapses: state.allLapseData }
 }
 
-export default connect(mapStateToProps, actions)(Dashboard);
+
+Dashboard = connect(mapStateToProps, actions)(Dashboard)
+Dashboard = reduxForm({
+  form: "comment",
+  fields: "comment"
+})(Dashboard);
+
+export default Dashboard;
