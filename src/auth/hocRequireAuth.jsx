@@ -9,7 +9,6 @@ export default function(ComposedComponent) {
     }
 
     componentWillMount() {
-      console.log('React.PropTypes', React.PropTypes)
       if (!this.props.authenticated) {
         this.context.router.push('/');
       }

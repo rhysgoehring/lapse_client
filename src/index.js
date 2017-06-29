@@ -51,9 +51,6 @@ ReactDOM.render(
         <Route path="dashboard" component={RequireAuth(Dashboard)} />
         <Route path="newLapse" component={RequireAuth(NewLapse)} />
         <Route path="profile" component={RequireAuth(Profile)} />
-        {/* <Route path="dashboard" component={RequireAuth(Dashboard)} />
-        <Route path="newLapse" component={RequireAuth(NewLapse)} />
-        <Route path="lapses/:id" component={RequireAuth(ViewLapse)} /> */}
       </Route>
     </Router>
   </Provider>, document.getElementById('root')
