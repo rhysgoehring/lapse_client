@@ -12,11 +12,11 @@ class Dashboard extends Component {
   super(props);
   this.state = {
     showModal: false,
-    comment: ''
+    
   }
 }
   openModal() {
-    this.setState({showModal: true, comment: ''})
+    this.setState({showModal: true})
   }
   
   closeModal() {
@@ -24,8 +24,8 @@ class Dashboard extends Component {
   }
   
   componentDidMount() {
-    
     this.props.getAllLapses();
+    this.props.getAllComments();
   }
   
  
@@ -102,13 +102,16 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps(state) {
-  return {lapses: state.allLapseData }
+  return {
+    lapses: state.allLapseData.lapses,
+    comments: state.allLapseData
+  }
 }
 
 
 Dashboard = connect(mapStateToProps, actions)(Dashboard)
 Dashboard = reduxForm({
-  form: "comment",
+  form: "postComment",
   fields: "comment"
 })(Dashboard);
 
