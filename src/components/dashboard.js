@@ -8,14 +8,9 @@ import {reduxForm, Field} from 'redux-form';
 
 
 class Dashboard extends Component {
-
-  
-  componentDidMount() {
+  componentWillMount() {
     this.props.getAllLapses();
   }
-  
- 
-   
   renderLapses() {
     return _.map(this.props.lapses, lapse => {
       return (
@@ -65,7 +60,7 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
   return {
-    lapses: state.allLapseData.lapses
+    lapses: state.allLapseData
   }
 }
 

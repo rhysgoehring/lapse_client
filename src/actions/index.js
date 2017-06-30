@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {browserHistory} from 'react-router';
-import {AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ALL_LAPSES, GET_LAPSE, GET_COMMENTS} from './types';
+import {AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ALL_LAPSES, GET_LAPSE, GET_COMMENTS, POST_COMMENT} from './types';
 
 const ROOT_URL = 'http://localhost:8080';
 
@@ -76,8 +76,6 @@ export function getAllLapses() {
     // Submit email/password to the server
     axios.get(`${ROOT_URL}/api/lapses`)
     .then((response) => {
-      console.log('getAllLapses response: ', response)
-    
     dispatch(
       {
         type: GET_ALL_LAPSES,
@@ -110,12 +108,31 @@ export function getComments(id) {
   return function(dispatch){
     axios.get(`${ROOT_URL}/api/lapses/comments/${id}`)
       .then((response) => {
+        console.log('getComments(id) reponse: ', response.data)
         dispatch({
           type: GET_COMMENTS,
           payload: response.data
         })
       })
       .catch((error) =>{
+        console.log(error);
+      })
+  }
+}
+
+export function postComment({id, body, commenter}) {
+  return function(dispatch) {
+    axios.post(`${ROOT_URL}/api/lapses/comments/${id}`, {id, body, commenter})
+      .then((response) => {
+        console.log('response.data: ', response.data)
+        let newPost = response.data
+        
+        dispatch({
+          type: POST_COMMENT,
+          payload: newPost
+        })
+      })
+      .catch((error) => {
         console.log(error);
       })
   }
