@@ -8,24 +8,10 @@ import {reduxForm, Field} from 'redux-form';
 
 
 class Dashboard extends Component {
-  constructor(props) {
-  super(props);
-  this.state = {
-    showModal: false,
-    
-  }
-}
-  openModal() {
-    this.setState({showModal: true})
-  }
-  
-  closeModal() {
-    this.setState({showModal: false})
-  }
+
   
   componentDidMount() {
     this.props.getAllLapses();
-    this.props.getAllComments();
   }
   
  
@@ -51,36 +37,12 @@ class Dashboard extends Component {
               <p>Taken on <strong>{lapse.date}</strong> in <strong>{lapse.location}</strong></p>
               <div className="row">
                 <div className="col-md-6">
-                  <button onClick={this.openModal.bind(this)} className="btn btn-success">Comments</button>
+                  <Link to={`/lapses/${lapse.id}`} className="btn btn-primary">View Comments</Link>
                 </div>
                 <div className="col-md-6">
                   <button className="btn btn-primary pull-right">All User's Lapses</button>
                 </div>
               </div>
-            <Modal show={this.state.showModal} onHide={this.state.closeModal}>
-              <Modal.Header closeButton >
-                <Modal.Title>Comments</Modal.Title>
-              </Modal.Header>
-              <Modal.Body>
-                <div className="well well-lg">
-                  // TODO: Create action and reducer for posting comments
-                </div>
-                <form>
-                  <fieldset className="form-group">
-                    <label>Enter Comment: </label>
-                    <Field
-                      name="comment"
-                      type="text"
-                      component="input"
-                      className="form-control" />
-                  </fieldset>
-                  <Button>Post</Button>
-                </form>
-              </Modal.Body>
-              <Modal.Footer>
-                <Button onClick={this.closeModal.bind(this)}>Close</Button>
-              </Modal.Footer>
-            </Modal>
             </div>
           </div>
         </div>
@@ -103,8 +65,7 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
   return {
-    lapses: state.allLapseData.lapses,
-    comments: state.allLapseData
+    lapses: state.allLapseData.lapses
   }
 }
 

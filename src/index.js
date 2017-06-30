@@ -22,6 +22,7 @@ import SignUp from './auth/signUp';
 import RequireAuth from './auth/hocRequireAuth';
 import NewLapse  from './components/newLapse';
 import Profile from './components/profile';
+import ViewLapse from './components/viewLapse';
 
 
 import {AUTH_USER} from './actions/types';
@@ -48,9 +49,10 @@ ReactDOM.render(
         <Route path="signin" component={SignIn} />
         <Route path="signout" component={SignOut} />
         <Route path="signup" component={SignUp} />
-        <Route path="dashboard" component={RequireAuth(Dashboard)} />
-        <Route path="newLapse" component={RequireAuth(NewLapse)} />
-        <Route path="profile" component={RequireAuth(Profile)} />
+        <Route path="dashboard" component={Dashboard} />
+        <Route path="newLapse" component={NewLapse} />
+        <Route path="profile" component={Profile} />
+        <Route path="/lapses/:id" component={ViewLapse} />
       </Route>
     </Router>
   </Provider>, document.getElementById('root')

@@ -1,5 +1,5 @@
 import _ from 'lodash';
-import {GET_ALL_LAPSES, GET_ALL_COMMENTS} from '../actions/types';
+import {GET_ALL_LAPSES, GET_LAPSE} from '../actions/types';
 
 
 export default function(state = {}, action) {
@@ -8,10 +8,8 @@ export default function(state = {}, action) {
       return {
         lapses: _.mapKeys(action.payload, 'id')
       };
-    case GET_ALL_COMMENTS:
-        return {...state,
-         comments: _.mapKeys(action.payload, 'id')
-        }
+    case GET_LAPSE:
+      return {...state, [action.payload.id]: action.payload}
     }
         return state;
 }
