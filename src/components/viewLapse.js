@@ -4,17 +4,15 @@ import {connect} from 'react-redux';
 import * as actions from '../actions/index';
 import {Grid, Row, Col} from 'react-bootstrap';
 import {reduxForm, Field} from 'redux-form';
-import {findDOMNode} from 'react-dom'
+import _ from 'lodash';
 
 class ViewLapse extends Component {
-  componentDidMount() {
+  componentWillMount() {
     const {id} = this.props.params;
-    console.log('componentDidMount this.props: ', this.props)
     this.props.getLapse(id)
   }
   
-  componentWillMount() {
-    console.log('componentWillMount this.props.lapse: ', this.props.lapse)
+  componentDidMount() {
     const {id} = this.props.params
     this.props.getComments(id)
   }
@@ -24,6 +22,21 @@ class ViewLapse extends Component {
     values.id= this.props.params.id
     console.log('values: ', values)
     this.props.postComment(values);
+  }
+  
+  renderComments() {
+    return _.map(this.props.comments, comment => {
+      return (
+      <div className="row">
+        <div className="col-md-2">
+          <strong>{comment.commenter}: </strong>
+        </div>
+        <div className="col-md-10">
+          <p className="pull-left">{comment.body}</p>
+        </div>
+      </div>
+      )
+    })
   }
   
   render() {
@@ -46,10 +59,10 @@ class ViewLapse extends Component {
               <img style={{width:"300px"}} src={lapse.pic_3_url} />
             </Col>
           </Row>
-          <br />
+          <hr />
           <Row>
-            <Col md={4}>
-              <video style={{width:"300px"}} controls>
+            <Col md={5}>
+              <video style={{width:"450px"}} poster={lapse.pic_2_url} controls>
                 <source type="application/x-mpegurl" src={lapse.playlist_url} />
                 <source type="video/mp4" src={lapse.pic_1_url} />
                 <source type="video/mp4"
@@ -60,30 +73,27 @@ class ViewLapse extends Component {
                 src={lapse.url4} />
               </video>
             </Col>
-            <Col md={8}>
+            <Col md={7}>
               <div className="well well-lg">
                 <div className="row">
                   <p className="text-center"><strong>Comments</strong></p>
                 </div>
-                <div className="row">
-                  <div className="col-md-2">
-                    <strong>{comments.commenter}: </strong>
-                  </div>
-                  <div className="col-md-10">
-                    <p className="pull-left">{comments.body}</p>
-                  </div>
-                </div>
+                {this.renderComments()}
                 <div className="row">
                   <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                     <fieldset className="form-group">
-                      <label>Post a Comment</label>
-                      <Field
-                        name="body"
-                        type="text"
-                        component="input"
-                        className="form-control" />
+                      <div className="col-md-10">
+                        <label>Post a Comment</label>
+                        <Field
+                          name="body"
+                          type="text"
+                          component="textarea"
+                          className="form-control" />
+                      </div>
+                      <div className="col-md-2">
+                        <button type="submit" className="btn btn-primary postCommentBtn">Comment</button>
+                      </div>
                     </fieldset>
-                    <button type="submit" className="btn btn-primary">Comment</button>
                   </form>
                 </div>
               </div>

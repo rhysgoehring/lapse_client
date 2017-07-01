@@ -1,4 +1,4 @@
-.video-player{
+.video-player {
   width: 540px;
   align-content: stretch;
 }
@@ -6,4 +6,9 @@
 img.navbar-link {
   /*height: 50px;*/
   width: 4.00em;
+}
+
+.postCommentBtn {
+  /*border-top: 16px;*/
+  margin-top: 2.3em
 }

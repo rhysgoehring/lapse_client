@@ -73,14 +73,14 @@ export function signOutUser() {
 
 export function getAllLapses() {
   return function(dispatch) {
-    // Submit email/password to the server
     axios.get(`${ROOT_URL}/api/lapses`)
     .then((response) => {
-    dispatch(
-      {
-        type: GET_ALL_LAPSES,
-        payload: response.data
-      }
+      console.log('getAllLapses reponse.data: ', response.data)
+      dispatch(
+        {
+          type: GET_ALL_LAPSES,
+          payload: response.data
+        }
     )
   })
     .catch((error) => {
@@ -93,6 +93,7 @@ export function getLapse(id) {
   return function(dispatch){
     axios.get(`${ROOT_URL}/api/lapses/${id}`)
       .then((response) => {
+        console.log('getLapse(id) reponse.data: ', response.data)
         dispatch({
           type: GET_LAPSE,
           payload: response.data
@@ -108,7 +109,7 @@ export function getComments(id) {
   return function(dispatch){
     axios.get(`${ROOT_URL}/api/lapses/comments/${id}`)
       .then((response) => {
-        console.log('getComments(id) reponse: ', response.data)
+        console.log('getComments(id) response.data: ', response.data)
         dispatch({
           type: GET_COMMENTS,
           payload: response.data
