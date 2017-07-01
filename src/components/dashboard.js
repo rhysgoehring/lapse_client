@@ -11,6 +11,8 @@ class Dashboard extends Component {
   componentWillMount() {
     this.props.getAllLapses();
   }
+  
+  
   renderLapses() {
     return _.map(this.props.lapses, lapse => {
       return (
@@ -27,7 +29,7 @@ class Dashboard extends Component {
               src={lapse.url4} />
             </video>
             <div>
-              <span><h3>{lapse.name}<Button className="pull-right"><Glyphicon glyph="plus"/></Button><Button className="pull-right"><Glyphicon glyph="minus"/></Button></h3></span>
+              <span><h3>{lapse.name}<Button onClick={() => {this.props.upVote(lapse.id)}} className="pull-right"><Glyphicon glyph="plus"/></Button><span>{lapse.votes}</span><Button className="pull-right"><Glyphicon glyph="minus"/></Button></h3></span>
               <p>{lapse.description}</p>
               <p>Taken on <strong>{lapse.date}</strong> in <strong>{lapse.location}</strong></p>
               <div className="row">

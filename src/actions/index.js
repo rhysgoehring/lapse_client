@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {browserHistory} from 'react-router';
-import {AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ALL_LAPSES, GET_LAPSE, GET_COMMENTS, POST_COMMENT} from './types';
+import {AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ALL_LAPSES, GET_LAPSE, GET_COMMENTS, POST_COMMENT, UP_VOTE} from './types';
 
 const ROOT_URL = 'http://localhost:8080';
 
@@ -138,3 +138,17 @@ export function postComment({id, body, commenter}) {
       })
   }
 }
+
+export function upVote(id) {
+  return function(dispatch) {
+    axios.post(`${ROOT_URL}/api/lapses/${id}/votes`)
+      .then((response) => {
+        console.log(response.data)
+      })
+      .catch((error) => {
+        console.log(error);
+      })
+  }
+}
+
+
