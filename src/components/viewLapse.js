@@ -22,12 +22,14 @@ class ViewLapse extends Component {
     values.id= this.props.params.id
     console.log('values: ', values)
     this.props.postComment(values);
+    const {id} = this.props.params
+    this.props.getComments(id);
   }
   
   renderComments() {
     return _.map(this.props.comments, comment => {
       return (
-      <div className="row">
+      <div className="row" key={comment.id}>
         <div className="col-md-2">
           <strong>{comment.commenter}: </strong>
         </div>
