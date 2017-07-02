@@ -10,7 +10,7 @@ class Post extends Component {
   }
   
   componentDidMount() {
-    console.log('POST component this.props: ', this.props)
+    console.log('POST component this: ', this)
   }
   
   render(){

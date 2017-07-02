@@ -5,7 +5,7 @@ import _ from 'lodash';
 import * as actions from '../actions/index';
 import {Button, Glyphicon, Modal} from 'react-bootstrap';
 import {reduxForm, Field} from 'redux-form';
-
+import Post from './post';
 
 class Dashboard extends Component {
   componentWillMount() {
@@ -51,10 +51,10 @@ class Dashboard extends Component {
   render() {
     return (
       <div className="container">
-        {/* <VideoDetail /> */}
         <h1 className="text-center">Dashboard</h1>
         <hr />
-        {this.renderLapses()}
+        {/* {this.renderLapses()} */}
+        <Post />
       </div>
     )
   }
