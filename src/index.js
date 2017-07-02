@@ -8,8 +8,9 @@ import {createStore, applyMiddleware} from 'redux';
 import logger from 'redux-logger';
 import reduxThunk from 'redux-thunk';
 
-import './react_public/stylesheets/index.css'
-import './react_public/stylesheets/landing.css';
+
+import './react_public/stylesheets/index.css';
+
 
 import reducers from './reducers/index';
 
@@ -23,6 +24,7 @@ import RequireAuth from './auth/hocRequireAuth';
 import NewLapse  from './components/newLapse';
 import Profile from './components/profile';
 import ViewLapse from './components/viewLapse';
+import Post from './components/post';
 
 
 import {AUTH_USER} from './actions/types';
@@ -32,7 +34,8 @@ const store = createStore(reducers, applyMiddleware(...middleware))
 
 // Automatically authenticate users, check on localStorage.getItem()
 // it doesn't seem to work with webpack, might have to declare it as a var
-// const token = localStorage.getItem('token');
+const token = localStorage.getItem('token');
+
 //
 // if (token) {
 //   store.dispatch(
@@ -49,10 +52,11 @@ ReactDOM.render(
         <Route path="signin" component={SignIn} />
         <Route path="signout" component={SignOut} />
         <Route path="signup" component={SignUp} />
-        <Route path="dashboard" component={Dashboard} />
-        <Route path="newLapse" component={NewLapse} />
-        <Route path="profile" component={Profile} />
-        <Route path="/lapses/:id" component={ViewLapse} />
+        <Route path="dashboard" component={RequireAuth(Dashboard)} />
+        <Route path="newLapse" component={RequireAuth(NewLapse)} />
+        <Route path="profile" component={RequireAuth(Profile)} />
+        <Route path="/lapses/:id" component={RequireAuth(ViewLapse)} />
+        <Route path="post" component={Post} />
       </Route>
     </Router>
   </Provider>, document.getElementById('root')
