@@ -7,15 +7,11 @@ import {Link} from 'react-router';
 class SignIn extends Component {
   
   handleFormSubmit({username, password}) {
-    
-    // Need to do something to log user in
     this.props.signinUser({username, password})
   }
   
   renderAlert() {
     if (this.props.errorMessage) {
-      console.log('this.props:', this.props)
-      console.log('this.props.errorMessage:', this.props.errorMessage)
       return (
         <div className="alert alert-danger">
           <strong>Oops!</strong> {this.props.errorMessage}
@@ -28,29 +24,62 @@ class SignIn extends Component {
     const {handleSubmit, fields: {username, password}} = this.props
     
     return (
-      <div className="container-fluid">
-        <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
-          <fieldset className="form-group">
-            <label>Username: </label>
-            <Field
-              name="username"
-              type="text"
-              component="input"
-              className="form-control" />
-          </fieldset>
-          <fieldset className="form-group">
-            <label>Password: </label>
-            <Field
-              name="password"
-              type="password"
-              component="input"
-              className="form-control" />
-          </fieldset>
-          {this.renderAlert()}
-          <button action="submit" className="btn btn-primary">Sign In</button>
-          <Link className="btn btn-primary" to="/signup">Sign Up</Link>
-        </form>
+      <div className="signInMain">
+        <div className="container signInMain">
+          <header>
+            <h1 className ="text-center lapseLogo">
+              L A P S E
+            </h1>
+          </header>
+          <section />
+          <br />
+          <br />
+          <article>
+            <div className="container">
+              <form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
+                <div className="row">
+                  <fieldset className="form-group col-md-6">
+                    <label className="rhysLbl">Username: </label>
+                    <Field
+                      name="username"
+                      type="text"
+                      component="input"
+                      className="form-control rhysField" />
+                  </fieldset>
+                  <fieldset className="form-group">
+                    <label className="rhysLbl">Password: </label>
+                    <Field
+                      name="password"
+                      type="password"
+                      component="input"
+                      className="form-control rhysField" />
+                  </fieldset>
+                  {this.renderAlert()}
+                </div>
+                <div className="row">
+                  <div className="col-md-6">
+                    
+                  </div>
+                </div>
+                <div className="container">
+                  <div className="row">
+                    <div className="col-md-6">
+                      <button action="submit" className="rhysBtn">Sign In</button>
+                    </div>
+                    <div className="col-md-6">
+                      <Link className="rhysBtn" to="/signup">Sign Up</Link>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </article>
+        </div>
       </div>
+        
+        
+
+      
       
     )
   }

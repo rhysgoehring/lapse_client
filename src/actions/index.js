@@ -34,12 +34,13 @@ export function signinUser({ username, password }) {
   }
 }
 
-export function signupUser({username, password, email}) {
+export function signupUser({username, password, email, profilePicUrl}) {
   return function(dispatch) {
-    axios.post(`${ROOT_URL}/api/users/signup`, { username, password, email})
+    axios.post(`${ROOT_URL}/api/users/signup`, { username, password, email, profilePicUrl})
       .then(response => {
         
-        const currentUser = response.data.currentUser.id
+        const currentUser = response.data.currentUser
+        console.log('$$$signedUpUser: ', currentUser)
         const token = response.data.token
         dispatch(
           {

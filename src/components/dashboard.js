@@ -53,8 +53,8 @@ class Dashboard extends Component {
       <div className="container">
         <h1 className="text-center">Dashboard</h1>
         <hr />
-        {/* {this.renderLapses()} */}
-        <Post />
+        {this.renderLapses()}
+        {/* <Post /> */}
       </div>
     )
   }
