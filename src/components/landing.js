@@ -3,23 +3,33 @@ import {Link} from 'react-router';
 import {Carousel, Jumbotron} from 'react-bootstrap';
 
 class Landing extends Component {
+    constructor(){
+      super();
+        this.state = {
+          index: 0
+        }
+      
+    }
+    
+  
+  
   render() {
     return (
       <div className="landingBox">
-        <Carousel className="landingCorousel" controls={false} indicators={false} interval={2000} wrap={false}>
-          <Carousel.Item index={1} >
-            <video className="landingVideo" autoPlay poster="https://s3-us-west-2.amazonaws.com/rhyslapse/Images/may204pm0375.jpg">
-              <source type="application/x-mpegurl" src='https://cdn.flowplayer.org/391106/457906.m3u8' />
-              <source type="video/mp4" src="https://s3-us-west-2.amazonaws.com/rhyslapse/Images/may204pm0000.jpg" />
+        <Carousel className="landingCorousel" activeIndex={this.state.index} controls={false} indicators={false} wrap={false}>
+          <Carousel.Item index={0}>
+            <video ref='introVid' autoPlay className="landingVideo" onEnded={()=> this.setState({index: 1})}>
+              <source type="application/x-mpegurl" src="https://cdn.flowplayer.org/391106/471991.m3u8" />
+              <source type="video/mp4" src="https://cdn.flowplayer.org/391106/471991-1080p.mp4" />
               <source type="video/mp4"
-              src="https://cdn.flowplayer.org/391106/457906-720p.mp4" />
+              src="https://cdn.flowplayer.org/391106/471991-720p.mp4" />
               <source type="video/mp4"
-              src="https://cdn.flowplayer.org/391106/457906.mp4" />
+              src="https://cdn.flowplayer.org/391106/471991.mp4" />
               <source type="video/mp4"
-              src="https://cdn.flowplayer.org/391106/457906-216p.mp4" />
+              src="https://cdn.flowplayer.org/391106/471991-216p.mp4" />
             </video>
           </Carousel.Item>
-          <Carousel.Item index={2} direction={null} animateIn={false}>
+          <Carousel.Item index={1} direction='null' animateIn="true">
             <Jumbotron className="landingJumbo">
               <br />
               <br />

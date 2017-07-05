@@ -8,11 +8,11 @@ import {reduxForm, Field} from 'redux-form';
 
 
 class Dashboard extends Component {
-  componentWillMount() {
+  componentDidMount() {
     this.props.getAllLapses();
   }
   
-  
+
   renderLapses() {
     return _.map(this.props.lapses, lapse => {
       return (
@@ -29,15 +29,15 @@ class Dashboard extends Component {
               src={lapse.url4} />
             </video>
             <div>
-              <span><h3>{lapse.name}<Button onClick={() => {this.props.upVote(lapse.id)}} className="pull-right"><Glyphicon glyph="plus"/></Button><span>{lapse.votes}</span><Button className="pull-right"><Glyphicon glyph="minus"/></Button></h3></span>
+              <span><h3>{lapse.name}<Button onClick={() => {this.props.upVote(lapse.id)}} className="pull-right"><Glyphicon glyph="plus"/></Button><span><p ref= {lapse.id}>{lapse.votes}</p></span><Button className="pull-right"><Glyphicon glyph="minus"/></Button></h3></span>
               <p>{lapse.description}</p>
               <p>Taken on <strong>{lapse.date}</strong> in <strong>{lapse.location}</strong></p>
               <div className="row">
                 <div className="col-md-6">
-                  <Link to={`/lapses/${lapse.id}`} className="btn btn-primary">View Comments</Link>
+                  <Link to={`/lapses/${lapse.id}`} className="rhysBtn">View Comments</Link>
                 </div>
                 <div className="col-md-6">
-                  <button className="btn btn-primary pull-right">All User's Lapses</button>
+                  <button className="rhysBtn pull-right">All User's Lapses</button>
                 </div>
               </div>
             </div>
@@ -49,6 +49,7 @@ class Dashboard extends Component {
   
   
   render() {
+    console.log('this', this)
     return (
       <div className="container">
         <h1 className="text-center">Dashboard</h1>

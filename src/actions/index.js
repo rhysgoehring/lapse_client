@@ -142,7 +142,7 @@ export function postComment({id, body, commenter}) {
 
 export function upVote(id) {
   return function(dispatch) {
-    axios.post(`${ROOT_URL}/api/lapses/${id}/votes`)
+    axios.post(`${ROOT_URL}/api/lapses/${id}/upVote`)
       .then((response) => {
         console.log(response.data)
       })
