@@ -80,7 +80,6 @@ class ViewLapse extends Component {
                 <div className="row">
                   <p className="text-center"><strong>Comments</strong></p>
                 </div>
-                {this.renderComments()}
                 <div className="row">
                   <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                     <fieldset className="form-group">
@@ -98,11 +97,11 @@ class ViewLapse extends Component {
                     </fieldset>
                   </form>
                 </div>
+                {this.renderComments()}
               </div>
             </Col>
           </Row>
         </Grid>
-        
     )
   }
 }
