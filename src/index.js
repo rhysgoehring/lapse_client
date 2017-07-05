@@ -24,7 +24,7 @@ import RequireAuth from './auth/hocRequireAuth';
 import NewLapse  from './components/newLapse';
 import Profile from './components/profile';
 import ViewLapse from './components/viewLapse';
-import Post from './components/post';
+import UploadVideo from './flowplayer/uploadVideo';
 
 
 import {AUTH_USER} from './actions/types';
@@ -52,11 +52,11 @@ ReactDOM.render(
         <Route path="signin" component={SignIn} />
         <Route path="signout" component={SignOut} />
         <Route path="signup" component={SignUp} />
-        <Route path="dashboard" component={RequireAuth(Dashboard)} />
-        <Route path="newLapse" component={RequireAuth(NewLapse)} />
-        <Route path="profile" component={RequireAuth(Profile)} />
-        <Route path="/lapses/:id" component={RequireAuth(ViewLapse)} />
-        <Route path="post" component={Post} />
+        <Route path="dashboard" component={Dashboard} />
+        <Route path="newLapse" component={NewLapse} />
+        <Route path="profile" component={Profile} />
+        <Route path="/lapses/:id" component={ViewLapse} />
+        <Route path="uploadVideo" component={UploadVideo} />
       </Route>
     </Router>
   </Provider>, document.getElementById('root')

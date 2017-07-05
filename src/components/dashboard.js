@@ -5,7 +5,7 @@ import _ from 'lodash';
 import * as actions from '../actions/index';
 import {Button, Glyphicon, Modal} from 'react-bootstrap';
 import {reduxForm, Field} from 'redux-form';
-import Post from './post';
+
 
 class Dashboard extends Component {
   componentWillMount() {

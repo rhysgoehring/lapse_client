@@ -21,6 +21,9 @@ class NavBar extends Component {
               <NavItem eventKey={1}>
                 <Link to="/newLapse">New Lapse</Link>
               </NavItem>
+              <NavItem eventKey={2}>
+                <Link to="/uploadVideo">New Lapse</Link>
+              </NavItem>
             </Nav>
           </Col>
           <Col md={4} lg={2} lgOffset={1} sm={4}>
