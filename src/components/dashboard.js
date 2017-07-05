@@ -34,10 +34,10 @@ class Dashboard extends Component {
               <p>Taken on <strong>{lapse.date}</strong> in <strong>{lapse.location}</strong></p>
               <div className="row">
                 <div className="col-md-6">
-                  <Link to={`/lapses/${lapse.id}`} className="rhysBtn">View Comments</Link>
+                  <Link to={`/lapses/${lapse.id}`} className="rhysBtn">Comments/Details</Link>
                 </div>
                 <div className="col-md-6">
-                  <button className="rhysBtn pull-right">All User's Lapses</button>
+                  <Link to={`/users/${lapse.user_id}/lapses`} className="rhysBtn">View All Their Lapses</Link>
                 </div>
               </div>
             </div>

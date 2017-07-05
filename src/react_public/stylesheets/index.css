@@ -157,8 +157,15 @@ input.form-control.rhysField:focus {
 
 
 }
+/*#####################################USERLAPSES#############################*/
+.lapseWell{
+  margin: 5px, 1px;
+}
 
-
+video.userLapsePlayer{
+  width: 350px;
+  align-content:stretch;
+}
 /*#####################################NAVBAR#################################*/
 
 img.navbar-link {

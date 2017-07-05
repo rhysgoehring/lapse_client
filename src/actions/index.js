@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {browserHistory} from 'react-router';
-import {AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ALL_LAPSES, GET_LAPSE, GET_COMMENTS, POST_COMMENT, UP_VOTE} from './types';
+import {AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ALL_LAPSES, GET_LAPSE, GET_COMMENTS, POST_COMMENT, UP_VOTE, GET_USER_LAPSES} from './types';
 
 const ROOT_URL = 'http://localhost:8080';
 
@@ -102,6 +102,23 @@ export function getLapse(id) {
       })
       .catch((error) =>{
         console.log(error);
+      })
+  }
+}
+
+export function getUserLapses(id){
+  return function(dispatch){
+    axios.get(`${ROOT_URL}/api/users/${id}/lapses`)
+      .then(response => {
+        console.log("get UserLapsesresponse.data", response.data)
+        
+        dispatch({
+          type: GET_USER_LAPSES,
+          payload: response.data
+        })
+      })
+      .catch(err => {
+        console.error(err);
       })
   }
 }

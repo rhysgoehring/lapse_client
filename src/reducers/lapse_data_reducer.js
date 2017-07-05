@@ -9,5 +9,5 @@ export default function(state = {}, action) {
     case GET_LAPSE:
       return {...state, [action.payload.id]: action.payload}
     }
-        return state;
+      return state;
 }
