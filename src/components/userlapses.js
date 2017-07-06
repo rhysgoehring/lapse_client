@@ -50,7 +50,7 @@ class UserLapses extends Component {
   render() {
     return (
       <div className='container'>
-        <h1 className='text-center lapseLogo'>Your Lapses</h1>
+        <h1 className='text-center lapseLogo'>Lapses</h1>
        {this.renderUserLapses()}
       </div>
      
