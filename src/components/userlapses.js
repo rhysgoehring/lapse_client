@@ -14,7 +14,6 @@ class UserLapses extends Component {
   renderUserLapses() {
     return _.map(this.props.usersLapses, lapse => {
       return (
-
             <div className="col-md-4 lapseWell" key={lapse.id}>
               <div>
                 <video className="userLapsePlayer" controls>
