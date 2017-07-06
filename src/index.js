@@ -53,12 +53,12 @@ ReactDOM.render(
         <Route path="signin" component={SignIn} />
         <Route path="signout" component={SignOut} />
         <Route path="signup" component={SignUp} />
-        <Route path="dashboard" component={Dashboard} />
-        <Route path="newLapse" component={NewLapse} />
-        <Route path="profile" component={Profile} />
-        <Route path="/lapses/:id" component={ViewLapse} />
-        <Route path="uploadVideo" component={UploadVideo} />
-        <Route path="/users/:id/lapses" component={UserLapses} />
+        <Route path="dashboard" component={RequireAuth(Dashboard)} />
+        <Route path="newLapse" component={RequireAuth(NewLapse)} />
+        <Route path="profile" component={RequireAuth(Profile)} />
+        <Route path="/lapses/:id" component={RequireAuth(ViewLapse)} />
+        <Route path="uploadVideo" component={RequireAuth(UploadVideo)} />
+        <Route path="/users/:id/lapses" component={RequireAuth(UserLapses)} />
       </Route>
     </Router>
   </Provider>, document.getElementById('root')
