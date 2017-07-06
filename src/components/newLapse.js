@@ -18,53 +18,53 @@ class NewLapse extends Component {
           <Row>
             <Col md={6}>
               <fieldset className="form-group">
-                <label>Name your Video: </label>
+                <label className='rhysLbl'>Name your Video: </label>
                 <Field
                   name="lapse_name"
                   type="text"
                   component="input"
-                  className="form-control" />
+                  className="form-control rhysField" />
               </fieldset>
             </Col>
             <Col md={6}>
               <fieldset className="form-group">
-                <label>Location: </label>
+                <label className='rhysLbl'>Location: </label>
                 <Field
                   name="lapse_location"
                   type="text"
                   component="input"
-                  className="form-control" />
+                  className="form-control rhysField" />
               </fieldset>
             </Col>
           </Row>
           
           <fieldset className="form-group">
-            <label>Description: </label>
+            <label className='rhysLbl'>Description: </label>
             <Field
               name="lapse_description"
               type="textarea"
               component="input"
-              className="form-control" />
+              className="form-control rhysField" />
           </fieldset>
           <fieldset className="form-group">
-            <label>Date: </label>
+            <label className='rhysLbl'>Date: </label>
             <Field
               name="lapse_date"
               type="date"
               component="input"
-              className="form-control" />
+              className="form-control rhysField" />
           </fieldset>
           <fieldset className="form-group">
-            <label>Video URL: </label>
+            <label className='rhysLbl'>Video URL: </label>
             <Field
               name="lapse_url"
               type="file"
               component="input"
-              className="form-control"
+              className="form-control rhysField"
               value= '' />
           </fieldset>
           {/* {this.renderAlert()} */}
-          <button action="submit" className="btn btn-primary">Create Lapse</button>
+          <button action="submit" className="rhysBtn">Create Lapse</button>
         </form>
       </div>
       

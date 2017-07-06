@@ -16,44 +16,58 @@ class Dashboard extends Component {
   renderLapses() {
     return _.map(this.props.lapses, lapse => {
       return (
-        <div className="col-md-6" key={lapse.id}>
-          <div>
-            <video className="video-player " controls>
-              <source type="application/x-mpegurl" src={lapse.playlist_url} />
-              <source type="video/mp4" src={lapse.url1} />
-              <source type="video/mp4"
-              src={lapse.url2} />
-              <source type="video/mp4"
-              src={lapse.url3} />
-              <source type="video/mp4"
-              src={lapse.url4} />
-            </video>
-            <div>
-              <span><h3>{lapse.name}<Button onClick={() => {this.props.upVote(lapse.id)}} className="pull-right"><Glyphicon glyph="plus"/></Button><span><p ref= {lapse.id}>{lapse.votes}</p></span><Button className="pull-right"><Glyphicon glyph="minus"/></Button></h3></span>
-              <p>{lapse.description}</p>
-              <p>Taken on <strong>{lapse.date}</strong> in <strong>{lapse.location}</strong></p>
-              <div className="row">
-                <div className="col-md-6">
-                  <Link to={`/lapses/${lapse.id}`} className="rhysBtn">Comments/Details</Link>
-                </div>
-                <div className="col-md-6">
-                  <Link to={`/users/${lapse.user_id}/lapses`} className="rhysBtn">View All Their Lapses</Link>
-                </div>
-              </div>
+        <div className="col-md-6">
+          <div className="row">
+            <div className="col-md-12" key={lapse.id}>
+              <div className="postBox">
+                <video className="video-player embed-responsive-item" controls>
+                  <source type="application/x-mpegurl" src={lapse.playlist_url} />
+                  <source type="video/mp4" src={lapse.url1} />
+                  <source type="video/mp4"
+                  src={lapse.url2} />
+                  <source type="video/mp4"
+                  src={lapse.url3} />
+                  <source type="video/mp4"
+                  src={lapse.url4} />
+                </video>
+          <div className="row">
+            <div className='col-md-8'>
+              <h2 className="postTitle"><strong>{lapse.name}</strong></h2>
+            </div>
+            <div className='col-md-4'>
+              <h4 className="postUser"><strong>{lapse.username}</strong></h4>
             </div>
           </div>
+          <div className="row">
+            <p className="postDesc">{lapse.description}</p>
+          <div className='row'>
+            <p className="text-center">Taken on <strong>{lapse.date}</strong> in <strong>{lapse.location}</strong></p>
+          </div>
+          </div>
+          <div className="row">
+            <div className="col-md-6">
+              <Link to={`/lapses/${lapse.id}`} className="rhysBtn postBtn">Comments/Details</Link>
+            </div>
+            <div className="col-md-6">
+              <Link to={`/users/${lapse.user_id}/lapses`} className="rhysBtn postBtn">View All Their Lapses</Link>
+            </div>
         </div>
+    </div>
+  </div>
+</div>
+</div>
+        
+        
       )
     })
   }
   
   
   render() {
-    console.log('this', this)
     return (
       <div className="container">
-        <h1 className="text-center">Dashboard</h1>
-        <hr />
+       <h1 className="lapseLogo text-center">Gallery</h1>
+        <hr style={{backgroundColor:'#FF652F'}}/>
         {this.renderLapses()}
         {/* <Post /> */}
       </div>
@@ -63,7 +77,8 @@ class Dashboard extends Component {
 
 function mapStateToProps(state) {
   return {
-    lapses: state.allLapseData
+    lapses: state.allLapseData,
+    auth: state.auth
   }
 }
 

@@ -24,6 +24,7 @@ class ViewLapse extends Component {
     this.props.postComment(values);
     const {id} = this.props.params
     this.props.getComments(id);
+    
   }
   
   renderComments() {
@@ -64,7 +65,7 @@ class ViewLapse extends Component {
           <hr />
           <Row>
             <Col md={5}>
-              <video style={{width:"450px"}} poster={lapse.pic_2_url} controls>
+              <video style={{width:"450px", marginTop:'1.7em'}} poster={lapse.pic_2_url} controls>
                 <source type="application/x-mpegurl" src={lapse.playlist_url} />
                 <source type="video/mp4" src={lapse.pic_1_url} />
                 <source type="video/mp4"
@@ -76,23 +77,31 @@ class ViewLapse extends Component {
               </video>
             </Col>
             <Col md={7}>
-              <div className="well well-lg">
+              <div className="well well-lg" style={{
+                backgroundColor: '#222629',
+                border: '1px solid #61892f',
+                display: 'inlineBlock',
+                color: '#86C232',
+                fontFamily: 'Ubuntu',
+                aligContent: 'center',
+                margin: '1em 1em'
+             }}>
                 <div className="row">
-                  <p className="text-center"><strong>Comments</strong></p>
+                  <p className="text-center lapseLogo"><strong>Comments</strong></p>
                 </div>
                 <div className="row">
                   <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
                     <fieldset className="form-group">
-                      <div className="col-md-10">
-                        <label>Post a Comment</label>
+                      <div className="col-md-9">
+                        <label className='rhysLbl'>Post a Comment</label>
                         <Field
                           name="body"
                           type="text"
                           component="textarea"
-                          className="form-control" />
+                          className="form-control rhysField" />
                       </div>
-                      <div className="col-md-2">
-                        <button type="submit" className="btn btn-primary postCommentBtn">Comment</button>
+                      <div className="col-md-3">
+                        <button type="submit" className=" postCommentBtn rhysBtn">Comment</button>
                       </div>
                     </fieldset>
                   </form>

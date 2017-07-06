@@ -2,7 +2,7 @@ import axios from 'axios';
 import {browserHistory} from 'react-router';
 import {AUTH_USER, UNAUTH_USER, AUTH_ERROR, GET_ALL_LAPSES, GET_LAPSE, GET_COMMENTS, POST_COMMENT, UP_VOTE, GET_USER_LAPSES} from './types';
 
-const ROOT_URL = 'http://localhost:8080';
+const ROOT_URL = 'https://lapse-server.herokuapp.com';
 
 export function signinUser({ username, password }) {
   return function(dispatch) {

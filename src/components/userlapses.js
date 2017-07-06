@@ -28,12 +28,13 @@ class UserLapses extends Component {
                   src={lapse.url4} />
                 </video>
                 <div>
-                  <span><h3>{lapse.name}<Button onClick={() => {this.props.upVote(lapse.id)}} className="pull-right"><Glyphicon glyph="plus"/></Button><span><p ref= {lapse.id}>{lapse.votes}</p></span><Button className="pull-right"><Glyphicon glyph="minus"/></Button></h3></span>
-                  <p>{lapse.description}</p>
-                  <p>Taken on <strong>{lapse.date}</strong> in <strong>{lapse.location}</strong></p>
+                  <span><h3 className='postTitle'>{lapse.name}</h3></span>
+                  <p style={{color:'#FF652F', fontFamily:'Ubuntu'
+                  }}>{lapse.description}</p>
+                  <p style={{color:'#FF652F', fontFamily:'Ubuntu'}}>Taken on <strong style={{color:'#FF652F', fontFamily:'Ubuntu'}}>{lapse.date}</strong> in <strong>{lapse.location}</strong></p>
                   <div className="row">
                     <div className="col-md-12">
-                      <Link to={`/lapses/${lapse.id}`} className="rhysBtn">Comments/Details</Link>
+                      <Link to={`/lapses/${lapse.id}`} className="rhysBtn">Comments & Pictures</Link>
                     </div>
                   </div>
                 </div>
@@ -49,7 +50,7 @@ class UserLapses extends Component {
   render() {
     return (
       <div className='container'>
-        <h1 className='text-center'>Lapses</h1>
+        <h1 className='text-center lapseLogo'>Your Lapses</h1>
        {this.renderUserLapses()}
       </div>
      

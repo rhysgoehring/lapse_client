@@ -18,37 +18,42 @@ class Profile extends Component {
       <div className="container">
         <form>
           <fieldset className="form-group">
-            <label>Username</label>
+            <label className='rhysLbl'>Username</label>
             <Field
               name="username"
               type="text"
               component="input"
-              className="form-control"
+              className="form-control rhysField"
               placeholder= {this.props.username}  />
           </fieldset>
           <fieldset className="form-group">
-            <label>Email</label>
+            <label className='rhysLbl'>Email</label>
             <Field
               name="email"
               type="email"
               component="input"
-              className="form-control"
+              className="form-control rhysField"
               placeholder= {this.props.email} />
           </fieldset>
           <div className="col-md-6">
-            <label>Current Profile Picture: </label>
+            <label className='rhysLbl'>Current Profile Picture: </label>
             <img alt="Current Profile Picture" src={this.props.profilePic} style={{width: "400px"}}/>
           </div>
           <div className="col-md-6">
             <fieldset className="form-group">
-              <label>Upload New Profile Pic: </label>
+              <label className="rhysLbl">Upload New Profile Pic: </label>
               <Field
                 name="profilePic"
                 type="file"
                 component="input"
-                className="form-control"
+                className="form-control rhysField"
                 value= '' />
             </fieldset>
+          <div className='row'>
+            <div className='col-md-6 pull-left'>
+              <button className='rhysBtn'>Update Profile</button>
+            </div>
+          </div>
           </div>
         </form>
       </div>

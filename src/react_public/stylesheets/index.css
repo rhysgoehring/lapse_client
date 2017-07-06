@@ -130,6 +130,58 @@ h1.lapseLogo {
   background-color: #0B0C10;
 }
 
+
+/***********************************DASHBOARD**********************************/
+.postBoxParent{
+  height: 50.0em;
+  width: 35.0em;
+}
+
+.postBox {
+  background-color: #222629;
+  border: 2px solid #61892f;
+  display: inline-block;
+  color: #86C232;
+  font-family: Ubuntu;
+  text-decoration: none;
+  align-content: center;
+  margin: 1em 0em;
+  z-index: 2;
+}
+
+.postTitle{
+  margin-left: 0.8em;
+  display: inline-block;
+  font-family: 'Megrim', cursive;
+  color: #86C232;
+}
+
+.postDesc {
+  margin-left: 2.0em;
+  display: inline-flex;
+  font-family: 'Ubuntu';
+  color: #FF652F;
+  align-content: center;
+  height: 3.6em;
+  width: 29.6em;
+}
+
+.postUser{
+  margin-top: 1.7em;
+  margin-left: 1.3em;
+  font-family: Ubuntu;
+  color: #FF652F;
+}
+
+.postBtn{
+  margin-left: 2.5em;
+  margin-bottom: 1.0em;
+}
+
+
+
+
+
 /***********************************FORMS**************************************/
 label.rhysLbl{
   font-family: 'Ubuntu', ubuntu-light;
@@ -158,13 +210,12 @@ input.form-control.rhysField:focus {
 
 }
 /*#####################################USERLAPSES#############################*/
-.lapseWell{
-  margin: 5px, 1px;
-}
+
+
 
 video.userLapsePlayer{
   width: 350px;
-  align-content:stretch;
+  align-content: stretch;
 }
 /*#####################################NAVBAR#################################*/
 
@@ -173,12 +224,66 @@ img.navbar-link {
     width: 4.00em;
 }
 
+.navbar {
+  border: none;
+  border-radius: 0;
+  background-color: rgba(0,0,0,0.5);
+  font-family: 'Megrim', cursive;
+    color: #86C232;
+}
+
+
 .video-player {
     width: 540px;
     align-content: stretch;
 }
 
+
 .postCommentBtn {
-    /*border-top: 16px;*/
-    margin-top: 2.3em
+    margin-top: 2.3em;
+    margin-right: 2.0em;
+    font-family: Ubuntu;
+    -moz-box-shadow: 0px 2px 0px 1px #222629;
+    -webkit-box-shadow: 0px 2px 0px 1px #222629;
+    box-shadow: 0px 0px 1px 1px #222629;
+    background-color: rgba(255, 255, 255, .0);
+    -moz-border-radius: 42px;
+    -webkit-border-radius: 42px;
+    border-radius: 42px;
+    border: 1px solid #61892f;
+    display: inline-block;
+    cursor: pointer;
+    color: #86C232;
+    font-family: Ubuntu;
+    font-weight: 300;
+    text-decoration: none;
+}
+
+.postCommentBtn:hover {
+    background-color: #61892f;
+    color: #ccc2a6;
+    text-decoration: none;
+}
+
+.postCommentBtn:active {
+    position: relative;
+    top: 1px;
+    text-decoration: none;
+}
+
+TextArea.form-control.rhysField {
+  background-color: transparent;
+  color: #e5dfc5;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom-color: #86C232;
+  border-bottom-style: groove;
+  border-bottom-width: 2px;
+}
+
+TextArea.form-control.rhysField:focus {
+  background-color: transparent;
+  color: #e5dfc5;
+  box-shadow: none;
 }
