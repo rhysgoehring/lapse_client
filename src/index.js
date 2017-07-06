@@ -37,14 +37,7 @@ const store = createStore(reducers, applyMiddleware(...middleware))
 // it doesn't seem to work with webpack, might have to declare it as a var
 const token = localStorage.getItem('token');
 
-//
-// if (token) {
-//   store.dispatch(
-//     {
-//       type: AUTH_USER,
-//       payload: currentUser
-//     })
-// }
+
 ReactDOM.render(
   <Provider store={store}>
     <Router history={browserHistory}>
