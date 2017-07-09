@@ -23,9 +23,9 @@ class NavBar extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
            <Nav pullRight>
-             <NavItem><Link style={{color: '#86C232'}} to="/signout">Sign Out</Link></NavItem>
              <NavItem><Link style={{color: '#86C232'}} to="/newLapse">New Lapse</Link></NavItem>
              <NavItem><Link style={{color: '#86C232'}} to={`/users/${this.props.userId}/lapses`}>My Lapses</Link></NavItem>
+             <NavItem><Link style={{color: '#86C232'}} to="/signout">Sign Out</Link></NavItem>
            </Nav>
          </Navbar.Collapse>
        </Navbar>

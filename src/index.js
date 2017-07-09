@@ -26,6 +26,7 @@ import Profile from './components/profile';
 import ViewLapse from './components/viewLapse';
 import UploadVideo from './flowplayer/uploadVideo';
 import UserLapses from './components/userlapses';
+import NewLapseTemp from './components/newLapseTemp';
 
 
 import {AUTH_USER} from './actions/types';
@@ -47,7 +48,7 @@ ReactDOM.render(
         <Route path="signout" component={SignOut} />
         <Route path="signup" component={SignUp} />
         <Route path="dashboard" component={RequireAuth(Dashboard)} />
-        <Route path="newLapse" component={RequireAuth(NewLapse)} />
+        <Route path="newLapse" component={RequireAuth(NewLapseTemp)} />
         <Route path="profile" component={RequireAuth(Profile)} />
         <Route path="/lapses/:id" component={RequireAuth(ViewLapse)} />
         <Route path="uploadVideo" component={RequireAuth(UploadVideo)} />
