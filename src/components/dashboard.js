@@ -16,9 +16,9 @@ class Dashboard extends Component {
   renderLapses() {
     return _.map(this.props.lapses, lapse => {
       return (
-        <div className="col-md-6">
+        <div className="col-md-6" key={lapse.id}>
           <div className="row">
-            <div className="col-md-12" key={lapse.id}>
+            <div className="col-md-12">
               <div className="postBox">
                 <video className="video-player embed-responsive-item" controls>
                   <source type="application/x-mpegurl" src={lapse.playlist_url} />

@@ -8,11 +8,7 @@ class Landing extends Component {
         this.state = {
           index: 0
         }
-      
     }
-    
-  
-  
   render() {
     return (
       <div className="landingBox">
@@ -29,7 +25,7 @@ class Landing extends Component {
               src="https://cdn.flowplayer.org/391106/471991-216p.mp4" />
             </video>
           </Carousel.Item>
-          <Carousel.Item index={1} direction='null' animateIn="true">
+          <Carousel.Item index={1} direction='null'>
             <Jumbotron className="landingJumbo">
               <br />
               <br />

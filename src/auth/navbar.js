@@ -23,33 +23,15 @@ class NavBar extends Component {
         </Navbar.Header>
         <Navbar.Collapse>
            <Nav pullRight>
-             <NavItem><Link style={{color: '#86C232'}} to="/profile">Profile</Link></NavItem>
+             <NavItem><Link style={{color: '#86C232'}} to="/signout">Sign Out</Link></NavItem>
              <NavItem><Link style={{color: '#86C232'}} to="/newLapse">New Lapse</Link></NavItem>
              <NavItem><Link style={{color: '#86C232'}} to={`/users/${this.props.userId}/lapses`}>My Lapses</Link></NavItem>
            </Nav>
          </Navbar.Collapse>
        </Navbar>
-   
+
         
-        /* <Navbar fixedTop style={{color: 'rgba(255, 255, 255, .0)'}}>
-        <Nav pullRight>
-          <NavItem eventKey={1}>
-            <Link to="/newLapse">New Lapse</Link>
-          </NavItem>
-          <NavItem eventKey={2}>
-            <Link to="/uploadVideo">New Lapse</Link>
-          </NavItem>
-        </Nav>
-        <Navbar.Brand bsClass='pull-right'>
-          <Link className='text-center' to='/dashboard'>Lapse</Link>
-        </Navbar.Brand>
-        <Navbar.Toggle />
-        <Navbar.Collapse>
-            <Nav>
-              <NavItem eventKey={1}><Link to="/profile"><img className="navbar-link" src={this.props.profilePic}/></Link></NavItem>
-            </Nav>
-        </Navbar.Collapse>
-      </Navbar> */
+     
         
         )
       }
