@@ -34,8 +34,6 @@ import {AUTH_USER} from './actions/types';
 const middleware = [reduxThunk, logger]
 const store = createStore(reducers, applyMiddleware(...middleware))
 
-// Automatically authenticate users, check on localStorage.getItem()
-// it doesn't seem to work with webpack, might have to declare it as a var
 const token = localStorage.getItem('token');
 
 
